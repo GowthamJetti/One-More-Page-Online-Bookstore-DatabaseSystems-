@@ -1,0 +1,6 @@
+(1001, 'Random House', 301123567, '13 Kerma Crescent Ben Bullen')
+(1002, 'Atria Books', 954235678, '5 Raglan Street Wrattens Forest')
+(1003, 'Plata Publishing', 617346789, '38 Elizabeth Street Wallu')
+(1004, 'Original Brazalian Publications', 415567890, '96 South Molle Boulevard Feluga')
+(1005, 'Wholesale Liquidation Lots', 214567901, '33 Mcgregor Street MENINDEE')
+(1006, 'Wholesale Liquidation Lots', 214567901, '33 Mcgregor Street MENINDEE')

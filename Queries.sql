@@ -1,53 +1,51 @@
 
-/* Indexes */
-create index users_email on Users(Email);
 
-create index books_title on Books(Title);
+/*  */
+Drop trigger Order_details_total_amount;
 
-create index order_total_amount on Orders(TotalAmount);
-
-
-/* Views */
-create view order_summary as 
-select od.OrderID, od.OrderDate, od.TotalAmount, usr.UserName
-from Orders as od inner join Users as usr
-on od.UserID = usr.UserID
-inner join OrderDetails as ords on ords. OrderID = od.OrderID;
-
-select * from order_summary;
-
-
-create view book_categories as 
-select cat.CategoryName, bok.*
-from Books as bok inner join Categories as cat on 
-bok.CategoryID = cat.CategoryID;
-
-select * from book_categories;
+delimiter //
+Create trigger `Order_details_total_amount`
+	after insert on `OrderDetails` for each row 
+	begin
+		declare amt decimal(10,2);
+		select sum(Price*Quantity) into amt
+		from OrderDetails
+		where OrderID=new.OrderID;
+		
+		update Orders
+		set TotalAmount= amt
+		where OrderID=new.OrderID;
+		
+       end;//
+delimiter ;
 
 
-/* Transactions */
-delete from Categories where CategoryID='4004';
+insert into OrderDetails (OrderDetailID, Quantity, Price, OrderID, BookID) 
+values ('606', '2', '25', '501', '10005');
 
-commit;
 
-select * from Categories;
+
+/* Locking */
+-- write 
+Lock table Reviews write;
+
+Delete from Reviews where ReviewID = 703;
+
+Select * from Reviews;
 
 --
-insert into Publishers (PublisherID, Name, PhoneNumber, Address) 
-values ('1006', 'Wholesale Liquidation Lots', '214567901', '33 Mcgregor Street MENINDEE');
+Lock table Reviews read;
 
-rollback;
+Insert into Reviews (ReviewID, Rating, BookID, UserID) 
+values ('703', '5', '10003', '103');
 
-select * from Publishers;
-
-
-/* Security */
-create user 'admin'@'localhost' identified by 'root';
-create user 'reviewer'@'localhost' identified by 'root';
-create user 'manager'@'localhost' identified by 'root';
+Select * from Reviews;
 
 
-grant select, insert, update, delete on onemorepage.Authors to 'admin'@'localhost';
-grant select, update on onemorepage.Reviews to 'reviewer'@'localhost';
-grant select, insert, update, delete on onemorepage.Orders to 'manager'@'localhost';
-grant select, insert, update, delete on onemorepage.OrderDetails to 'manager'@'localhost';
+/* Backup */
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+prompt @$f
+
+mysqldump -u root -p onemorepage > D:/onemorepage/backup.sql
+	

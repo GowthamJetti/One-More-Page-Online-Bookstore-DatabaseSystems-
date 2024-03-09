@@ -1,0 +1,3 @@
+(4001, 'Fiction')
+(4002, 'Science Fiction')
+(4003, 'Romance')

@@ -1,0 +1,6 @@
+(1, 'Paulo Coelho', 1947)
+(2, 'Charles Duhigg', 1974)
+(3, 'Colleen Hoover', 1979)
+(4, 'James Clear', 1986)
+(5, 'Robert Kiyosaki', 1947)
+(6, 'Haisley Richard', 1990)

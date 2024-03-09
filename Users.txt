@@ -1,0 +1,5 @@
+(101, 'Carlos Rose', 'carloscrose@gmail.com', 'F64#jvj', 973618995, '3175 Deer Ridge Drive Caldwell')
+(102, 'Alicia Teague', 'aliciateague@gmail.com', 'Kih^9gj', 267119462, '29 Chester Street Yelgun')
+(103, 'Lachlan Goyder', 'lachlangoyder@gmail.com', 'goy@837', 756963555, '47 Shirley Street Highland')
+(104, 'Finn Felan', 'finnfelan@gmail.com', 'NF79r@9', 261764408, '79 Grayson Street Munderoo')
+(105, 'Ben Brumby', 'benbrumby@gmail.com', 'MO0#9#', 393383073, '8 Cornish Street Keilor East')
